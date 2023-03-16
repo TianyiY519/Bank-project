@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Bank</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8000">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Checking&Savings
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Compare savings accounts</a>
+          <a class="dropdown-item" href="#">Compare checking accounts</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuPolls" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Credit Card
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuPolls">
+          {% if user.is_authenticated %}
+              <a class="dropdown-item" href="{% url 'UserAdmin:userdamin_apply_creditcard' %}">Apply a Credit Card</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/transactions/report/">Transaction report</a>
+          {% else %}
+              <a class="dropdown-item disabled" href="http://127.0.0.1:8000/transactions/report/">Transaction report</a>
+              <a class="dropdown-item disabled" href="{% url 'UserAdmin:userdamin_apply_creditcard' %}">Apply a Credit Card</a>
+          {% endif %}
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:8000/aboutme/">About us</a>
+      </li>
+    </ul>
+  </div>
+  {% if user.is_authenticated %}
+      <a class="nav-link active" href="{% url 'UserAdmin:userdamin_update_profile' %}">Profile</a>
+      <a class="nav-link active" href="{% url 'transactions:deposit_money' %}">Deposit</a>
+      <a class="nav-link active" href="{% url 'transactions:withdraw_money' %}">Withdrawal</a>
+      <a class="nav-link active" href="{% url 'UserAdmin:userdamin_logout' %}">Logout</a>
+  {% else %}
+      <a class="nav-link active" href="{% url 'UserAdmin:userdamin_login' %}">Login</a>
+      <a class="nav-link active" href="{% url 'UserAdmin:useradmin_register' %}">Register</a>
+  {% endif%}
+</nav>

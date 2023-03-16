@@ -1,0 +1,13 @@
+{% extends 'mysite/base.html' %}
+    {% block myblock %}
+    {% endblock %}
+<h1>Thank you for your apply!</h1>
+{% block title %}
+    <title>loading</title>
+{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+    {% csrf_token %}
+    {{ form|crispy }}
+{% endblock %}

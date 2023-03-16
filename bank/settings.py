@@ -98,11 +98,11 @@ WSGI_APPLICATION = 'bank.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bankweb',
-        'USER':'root',
-        'PASSWORD':'BABYbp192',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
+        'NAME': 'bank_database',
+        'USER': 'bank_username',
+        'PASSWORD': 'bank_password',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
